@@ -1,23 +1,22 @@
 import React from 'react';
 
-const Menu = () => {
+const menu = (props) => {
+
+    const{menuData} = props;
+
     return (
-        <div>
-            <div className='card mb-4 col-md-4'>
-          <img className="card-img-top"src="burger.jpeg" alt="Burger" style={{width:'20%'}}/>
-          <div className="card-body">
-            <h5 className="card-title">Burger</h5>
-            <p className="card-text">A delicious burger with all the fixings.</p>
-            <p className='card-text'>SEK 79.99</p>  
-          </div>
-         <div className="card-footer text-center">
-           <button className='btn btn-info btn-block'>Add to Order
-           </button>
-        </div>
-        </div>
-            
-        </div>
-    );
+        <div className='col-sm-6 col-md-5 col-lg-4 item'>
+            <img className="card-img-top col mt-2" src={menuData.image} alt={menuData.image} />
+            <div className="card-body">
+                <h5 className="card-title">{menuData.title}</h5>
+                <p className="card-text">{menuData.description}</p>
+                <p className='card-text'>{menuData.price}SEK</p>
+            </div>
+            <div className="card-text-left mb-2">
+                <button className='btn btn-info btn-block' style={{ backgroundColor: 'black', color: 'white' }}>Add to Order</button>
+            </div>
+          </div> 
+    )
 };
 
-export default Menu;
+export default menu;
