@@ -2,18 +2,19 @@ import React from 'react';
 
 const menu = (props) => {
 
-    const{menuData} = props;
+    const{menuData,addToOrder} = props;
 
     return (
-        <div className='col-sm-6 col-md-5 col-lg-4 item'>
-            <img className="card-img-top col mt-2" src={menuData.image} alt={menuData.image} />
-            <div className="card-body">
+        <div className='col-12 col-sm-6 col-md-4 col-lg-3 mb-3' style={{ marginTop: '20px' }}>
+            <div className='card'>
+            <img className="card-img-top" src={menuData.image} alt={menuData.image} />
+             <div className="card-body">
                 <h5 className="card-title">{menuData.title}</h5>
                 <p className="card-text">{menuData.description}</p>
                 <p className='card-text'>{menuData.price}SEK</p>
-            </div>
-            <div className="card-text-left mb-2">
-                <button className='btn btn-info btn-block' style={{ backgroundColor: 'black', color: 'white' }}>Add to Order</button>
+                <button className='btn btn-info btn-block' style={{ backgroundColor: 'black', color: 'white' }}
+                onClick={()=>addToOrder(menuData)}>Add to Order</button>
+             </div>
             </div>
           </div> 
     )
