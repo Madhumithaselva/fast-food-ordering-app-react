@@ -3,8 +3,7 @@ import React from 'react';
 function OrderSummary({orderItems,incrementQuantity,decrementQuantity}) {
     const calculateTotal= (orderItems)=>{
         return orderItems.reduce(
-            (total,item)=>total+item.price*item.quantity,0
-        );
+            (total,item)=>total+item.price*item.quantity,0);
     };
 
   return (

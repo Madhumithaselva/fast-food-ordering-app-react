@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState} from 'react';
+import { useEffect } from 'react';
 import MenuList from './MenuList';
 import OrderSummary from './OrderSummary';
 
@@ -26,6 +27,11 @@ function App(){
     ];
 
     const [orderItems,setOrderItems] = useState([]);
+    const [darkMode,setDarkMode] = useState(false);
+
+    const toggleModeHandler = () =>{
+        setDarkMode(!darkMode);
+    }
 
     const addToOrder=(menuItem) =>{
         const existingItem =orderItems.find(
@@ -47,20 +53,40 @@ function App(){
         const updatedOrder = orderItems.map((item)=>item.title === menuItem.title ? {...item,quantity:item.quantity-1}:item);
         setOrderItems(updatedOrder);
     };
+
+    useEffect(()=>{
+        const colorMode=darkMode?"dark":"light";
+        document.body.setAttribute("data-bs-theme",colorMode);
+    },[darkMode]);
     
     return (
-        <div className='App'>
-            <MenuList menuList={menuItemData}
-            addToOrder={addToOrder}/>
-            <OrderSummary 
-            orderItems={orderItems}
-            incrementQuantity={incrementQuantity}
-            decrementQuantity={decrementQuantity}
-            id="order-summary"
-            />
-        
-      
-        </div>
+    <div className='app-wrapper' style={{ margin: "40px 100px 400px 100px" }} >
+    <div className={`App ${darkMode ? 'darkMode' : ''}`}>
+            <nav className={`navbar navbar-expand-lg ${darkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`}>
+                <div className='container-fluid'>
+                    <a className='navbar-brand' href='#'>
+                        {darkMode ? 'Dark Mode' : 'Light Mode'}
+                  
+                    </a>
+                    </div>
+            </nav>
+
+                    <button type='button' className={`btn ${darkMode ? 'btn-light' : "btn-dark"}`} onClick={toggleModeHandler}>Toggle Mode
+                    </button>
+
+                    <MenuList 
+                        menuList={menuItemData}
+                        addToOrder={addToOrder} 
+                        />
+                    <OrderSummary
+                        orderItems={orderItems}
+                        incrementQuantity={incrementQuantity}
+                        decrementQuantity={decrementQuantity}
+                        id="order-summary"
+                     />
+
+                </div>
+        </div>             
       );   
     
 }

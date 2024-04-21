@@ -12,7 +12,8 @@ const MenuList = (props) => {
                     <Menu 
                     key={menuItem.title}
                     menuData={menuItem} 
-                    addToOrder={addToOrder}/>
+                    addToOrder={addToOrder}
+                    />
                 ))}
             </div> 
         </div>
