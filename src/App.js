@@ -61,18 +61,16 @@ function App(){
     
     return (
     <div className='app-wrapper' style={{ margin: "40px 100px 400px 100px" }} >
-    <div className={`App ${darkMode ? 'darkMode' : ''}`}>
+      <div className={`App ${darkMode ? 'darkMode' : ''}`}>
             <nav className={`navbar navbar-expand-lg ${darkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`}>
                 <div className='container-fluid'>
                     <a className='navbar-brand' href='#'>
-                        {darkMode ? 'Dark Mode' : 'Light Mode'}
-                  
+                        {darkMode ? 'Dark Mode' : 'Light Mode'}  
                     </a>
-                    </div>
+                </div>
             </nav>
-
-                    <button type='button' className={`btn ${darkMode ? 'btn-light' : "btn-dark"}`} onClick={toggleModeHandler}>Toggle Mode
-                    </button>
+            <button type='button' className={`btn ${darkMode ? 'btn-light' : "btn-dark"}`} onClick={toggleModeHandler}>Toggle Mode
+            </button>
 
                     <MenuList 
                         menuList={menuItemData}
@@ -84,9 +82,8 @@ function App(){
                         decrementQuantity={decrementQuantity}
                         id="order-summary"
                      />
-
-                </div>
-        </div>             
+       </div>
+    </div>             
       );   
     
 }
